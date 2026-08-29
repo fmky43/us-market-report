@@ -1,0 +1,55 @@
+name: Fetch Market Data
+
+on:
+  schedule:
+    # 毎営業日 22:00 UTC (仕様書 Q6: 日本時間7:00配信に対応)
+    - cron: '0 22 * * 1-5'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Fetch market data
+        run: python scripts/fetch_market_data.py
+
+      - name: Commit and push data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update market data $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            git push
+          fi
+
+      - name: Fail run if entire fetch failed
+        run: |
+          python - <<'EOF'
+          import json, sys
+          with open("data/latest.json") as f:
+              d = json.load(f)
+          status = d.get("overall_status")
+          print(f"overall_status = {status}")
+          if status == "failed":
+              print("::error::全銘柄の取得に失敗しました。無音のまま終わらせず、実行結果を失敗として記録します。")
+              sys.exit(1)
+          elif status == "partial":
+              print(f"::warning::一部銘柄の取得に失敗しました: {d.get('failed_tickers')}")
+          EOF
