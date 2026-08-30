@@ -1,8 +1,8 @@
 """
-米国市場モーニングレポート: データ取得スクリプト（ステップ2）
+米国市場モーニングレポート: データ取得スクリプト（ステップ2〜3）
 
-仕様書 4章のうち「指数」「マクロ」「日本関連」「セクターETF」を取得する。
-個別30銘柄・ニュース・経済指標カレンダーは対象外（次のステップで追加）。
+仕様書 4章の「指数」「マクロ」「日本関連」「セクターETF」「個別30銘柄」を取得する。
+ニュース・経済指標カレンダーは対象外（別ステップで追加）。
 
 出力:
   data/latest.json       ... 常に最新を上書き
@@ -11,11 +11,16 @@
 方針（厳守事項に基づく）:
   - 取得に失敗したティッカーは黙って除外せず、status: "failed" として記録する
   - 前日値・推定値での穴埋めは行わない（仕様書8章で禁止されている）
-  - 出来高の概念がない銘柄（VIX/SOX/TNX/ドル指数/ドル円）は
+  - 出来高の概念がない銘柄（VIX/SOX/TNX/ドル指数/ドル円/RUT）は
     volume系フィールドをnullにする（出来高0という虚偽の値にしない）
+  - Yahoo側で直近日足のOHLCが一時的にNaNになる既知の現象があるため、
+    yfinanceの repair=True（要 scipy）で自動修復を試みる。修復後もNaNが
+    残る場合は "取得できたが値が不正" として failed 扱いにする（NaNを
+    そのままJSONに書き込まない）
 """
 
 import json
+import math
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
@@ -58,6 +63,41 @@ TICKERS = {
         {"symbol": "XLU", "name": "公益"},
         {"symbol": "XLC", "name": "通信サービス"},
     ],
+    "individual_stocks": [
+        # メガキャップ
+        {"symbol": "AAPL", "name": "Apple"},
+        {"symbol": "MSFT", "name": "Microsoft"},
+        {"symbol": "NVDA", "name": "NVIDIA"},
+        {"symbol": "GOOGL", "name": "Alphabet"},
+        {"symbol": "AMZN", "name": "Amazon"},
+        {"symbol": "META", "name": "Meta"},
+        {"symbol": "TSLA", "name": "Tesla"},
+        {"symbol": "NFLX", "name": "Netflix"},
+        {"symbol": "ORCL", "name": "Oracle"},
+        {"symbol": "CRM", "name": "Salesforce"},
+        # 半導体
+        {"symbol": "AVGO", "name": "Broadcom"},
+        {"symbol": "AMD", "name": "AMD"},
+        {"symbol": "MU", "name": "Micron"},
+        {"symbol": "INTC", "name": "Intel"},
+        {"symbol": "QCOM", "name": "Qualcomm"},
+        {"symbol": "TXN", "name": "Texas Instruments"},
+        {"symbol": "ADI", "name": "Analog Devices"},
+        {"symbol": "LRCX", "name": "Lam Research"},
+        {"symbol": "AMAT", "name": "Applied Materials"},
+        {"symbol": "KLAC", "name": "KLA"},
+        {"symbol": "ASML", "name": "ASML"},
+        {"symbol": "TSM", "name": "TSMC"},
+        {"symbol": "ARM", "name": "Arm Holdings"},
+        {"symbol": "MRVL", "name": "Marvell"},
+        # その他指標性
+        {"symbol": "JPM", "name": "JPMorgan Chase"},
+        {"symbol": "BRK-B", "name": "Berkshire Hathaway"},
+        {"symbol": "XOM", "name": "ExxonMobil"},
+        {"symbol": "LLY", "name": "Eli Lilly"},
+        {"symbol": "WMT", "name": "Walmart"},
+        {"symbol": "COST", "name": "Costco"},
+    ],
 }
 
 # 出来高の概念がない(=Yahoo上で常に0が返る)銘柄。volume系フィールドはnullにする。
@@ -68,7 +108,7 @@ NO_VOLUME_SYMBOLS = {"^VIX", "^SOX", "^TNX", "DX-Y.NYB", "USDJPY=X", "^RUT"}
 
 def fetch_one(symbol: str, name: str) -> dict:
     try:
-        hist = yf.Ticker(symbol).history(period="2mo")
+        hist = yf.Ticker(symbol).history(period="2mo", repair=True)
     except Exception as e:
         return {
             "symbol": symbol,
@@ -89,6 +129,14 @@ def fetch_one(symbol: str, name: str) -> dict:
     prev = hist.iloc[-2]
     close = float(last["Close"])
     prev_close = float(prev["Close"])
+
+    if math.isnan(close) or math.isnan(prev_close):
+        return {
+            "symbol": symbol,
+            "name": name,
+            "status": "failed",
+            "error": f"直近日足のOHLCがNaN(repair=True適用後も未解消)。date={hist.index[-1].strftime('%Y-%m-%d')}",
+        }
     change = close - prev_close
     change_pct = (change / prev_close * 100) if prev_close else None
     date = hist.index[-1].strftime("%Y-%m-%d")

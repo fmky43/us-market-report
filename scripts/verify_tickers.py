@@ -1,9 +1,9 @@
 """
 検証専用スクリプト（本実装ではない）
-仕様書4章の「指数」「マクロ」「日本関連」「セクターETF」の
-全19銘柄について、yfinanceで実際に取得できるかを確認する。
+仕様書4章の「指数」「マクロ」「日本関連」「セクターETF」「個別30銘柄」について、
+yfinanceで実際に取得できるかを確認する。
 
-特に NKD=F（シカゴ日経平均先物）は仕様書9章の未確定事項のため、
+特に NKD=F（シカゴ日経平均先物）と BRK-B（yfinance表記のゆれの可能性）は
 詳しめに結果を出力する。
 """
 
@@ -17,7 +17,20 @@ TICKERS = {
         "XLK", "XLF", "XLE", "XLV", "XLY",
         "XLP", "XLI", "XLB", "XLRE", "XLU", "XLC",
     ],
+    "個別30銘柄": [
+        # メガキャップ
+        "AAPL", "MSFT", "NVDA", "GOOGL", "AMZN", "META", "TSLA", "NFLX", "ORCL", "CRM",
+        # 半導体
+        "AVGO", "AMD", "MU", "INTC", "QCOM", "TXN", "ADI", "LRCX", "AMAT", "KLAC",
+        "ASML", "TSM", "ARM", "MRVL",
+        # その他指標性
+        "JPM", "BRK-B", "XOM", "LLY", "WMT", "COST",
+    ],
 }
+
+# BRK-B は yfinance 上の表記ゆれの可能性が指摘されているため、
+# 候補表記を個別に突き合わせて確認する。
+BRK_CANDIDATES = ["BRK-B", "BRK.B", "BRK-B.US"]
 
 results = []
 
@@ -48,3 +61,16 @@ for category, symbol, status in results:
 
 ng = [r for r in results if r[2] != "OK"]
 print(f"\n合計 {len(results)} 銘柄中、失敗 {len(ng)} 銘柄")
+
+print("\n\n========== BRK-B 表記ゆれの確認 ==========")
+for symbol in BRK_CANDIDATES:
+    print(f"\n--- {symbol} ---")
+    try:
+        t = yf.Ticker(symbol)
+        hist = t.history(period="5d")
+        if hist.empty:
+            print("  -> 空（この表記では取得不可）")
+        else:
+            print(f"  -> 取得成功。直近終値: {hist['Close'].tail(1).values}")
+    except Exception as e:
+        print(f"  -> 取得失敗: {type(e).__name__}: {e}")
