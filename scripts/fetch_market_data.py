@@ -29,14 +29,19 @@ import json
 import math
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 import exchange_calendars as ecals
 import pandas as pd
 import yfinance as yf
 
 JST = timezone(timedelta(hours=9))
+NY_TZ = ZoneInfo("America/New_York")
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 NYSE = ecals.get_calendar("XNYS")
+
+# 引け直後の実行でデータが確定しきっていない可能性を避けるためのバッファ。
+CLOSE_BUFFER_MINUTES = 15
 
 TICKERS = {
     "indices": [
@@ -125,6 +130,26 @@ def compute_stale_after_jst(market_date: str) -> str:
     return next_close_utc.tz_convert(JST).isoformat()
 
 
+def is_before_todays_close(now_utc: datetime) -> bool:
+    """当日(NY時間の日付)が米国の取引日で、かつ現在時刻が
+    寄り付き時刻以降・引け時刻+バッファ未満のときだけTrueを返す。
+
+    寄り付き前(前日の確定値しかない状態)や、実行が遅延してNY時間の
+    翌日にずれ込んだ場合は、誤ってスキップしないようFalseを返す。
+    休場日もFalse(判定不要、通常どおり実行してよい)。
+    """
+    today_ny = now_utc.astimezone(NY_TZ).date()
+    session = pd.Timestamp(today_ny)
+    if not NYSE.is_session(session):
+        return False
+
+    open_utc = NYSE.session_open(session).to_pydatetime()
+    close_utc = NYSE.session_close(session).to_pydatetime()
+    threshold_utc = close_utc + timedelta(minutes=CLOSE_BUFFER_MINUTES)
+
+    return open_utc <= now_utc < threshold_utc
+
+
 def fetch_one(symbol: str, name: str) -> dict:
     try:
         hist = yf.Ticker(symbol).history(period="2mo", repair=True)
@@ -191,6 +216,15 @@ def fetch_one(symbol: str, name: str) -> dict:
 
 def main() -> None:
     now_utc = datetime.now(timezone.utc)
+
+    if is_before_todays_close(now_utc):
+        print(
+            "本日の取引時間中(引け+"
+            f"{CLOSE_BUFFER_MINUTES}分バッファ未満)のため、何もせず終了します。"
+            f" now_utc={now_utc.isoformat()}"
+        )
+        return
+
     now_jst = now_utc.astimezone(JST)
 
     data = {}

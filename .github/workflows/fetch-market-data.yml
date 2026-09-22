@@ -2,8 +2,14 @@ name: Fetch Market Data
 
 on:
   schedule:
-    # 毎営業日 22:00 UTC (仕様書 Q6: 日本時間7:00配信に対応)
-    - cron: '0 22 * * 1-5'
+    # 毎営業日、複数回実行(仕様書 Q6: 日本時間7:00配信に対応)。
+    # 毎時0分固定だと定期実行が1.5〜2時間遅延することがあるため、
+    # 分散した時刻で複数回トリガーし、市場引け前の実行はスクリプト側で無処理終了する。
+    - cron: '17 20 * * 1-5'
+    - cron: '47 20 * * 1-5'
+    - cron: '17 21 * * 1-5'
+    - cron: '47 21 * * 1-5'
+    - cron: '17 22 * * 1-5'
   workflow_dispatch: {}
 
 permissions:
@@ -14,10 +20,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: '3.11'
 
