@@ -17,6 +17,12 @@
     yfinanceの repair=True（要 scipy）で自動修復を試みる。修復後もNaNが
     残る場合は "取得できたが値が不正" として failed 扱いにする（NaNを
     そのままJSONに書き込まない）
+  - データの鮮度判定はCowork側(LLM)に休場日を推測させず、コード側で
+    NYSE公式カレンダー(exchange_calendars, XNYS)を用いて確定させる。
+    market_date の次の米国取引日の「実際の引け時刻」(短縮取引日・
+    夏時間/冬時間を自動反映)をJSTで算出し stale_after_jst として出力する。
+    Cowork側は「現在時刻 > stale_after_jst なら古い可能性あり」と
+    比較するだけでよい設計にしている。
 """
 
 import json
@@ -24,10 +30,13 @@ import math
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
+import exchange_calendars as ecals
+import pandas as pd
 import yfinance as yf
 
 JST = timezone(timedelta(hours=9))
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
+NYSE = ecals.get_calendar("XNYS")
 
 TICKERS = {
     "indices": [
@@ -104,6 +113,16 @@ TICKERS = {
 # ^RUT はYahoo上で^GSPCの出来高をそのまま返す不具合(検証済み: 直近64営業日中63日が完全一致)が
 # あるため、実際の出来高データを持たない銘柄として同グループに含める。
 NO_VOLUME_SYMBOLS = {"^VIX", "^SOX", "^TNX", "DX-Y.NYB", "USDJPY=X", "^RUT"}
+
+
+def compute_stale_after_jst(market_date: str) -> str:
+    """market_date(YYYY-MM-DD)の次の米国取引日の引け時刻を、
+    NYSE公式カレンダー(短縮取引日・夏時間/冬時間を反映)に基づきJSTで返す。
+    """
+    schedule = NYSE.schedule
+    future_days = schedule.loc[schedule.index > pd.Timestamp(market_date)]
+    next_close_utc = future_days.iloc[0]["close"]
+    return next_close_utc.tz_convert(JST).isoformat()
 
 
 def fetch_one(symbol: str, name: str) -> dict:
@@ -214,10 +233,23 @@ def main() -> None:
     if market_date is None:
         market_date = now_utc.strftime("%Y-%m-%d")
 
+    stale_after_jst = None
+    stale_after_jst_error = None
+    try:
+        stale_after_jst = compute_stale_after_jst(market_date)
+    except Exception as e:
+        stale_after_jst_error = f"{type(e).__name__}: {e}"
+
     output = {
         "generated_at_utc": now_utc.isoformat(),
         "generated_at_jst": now_jst.isoformat(),
         "market_date": market_date,
+        # 次の米国取引日の引け時刻(JST)。現在時刻がこれを過ぎていれば、
+        # より新しいデータが存在しうる(=このJSONは古い可能性がある)ことを意味する。
+        # 休場日判定はコード側(exchange_calendars/XNYS)で確定済みなので、
+        # 読み手は時刻比較だけでよい。
+        "stale_after_jst": stale_after_jst,
+        "stale_after_jst_error": stale_after_jst_error,
         "overall_status": overall_status,
         "summary": f"{total_count}銘柄中 {ok_count}件取得成功 / {len(failed_tickers)}件失敗",
         "failed_tickers": failed_tickers,
@@ -234,6 +266,11 @@ def main() -> None:
 
     print(f"overall_status = {overall_status}")
     print(output["summary"])
+    print(f"market_date = {market_date}")
+    if stale_after_jst:
+        print(f"stale_after_jst = {stale_after_jst}")
+    else:
+        print(f"stale_after_jst の算出に失敗: {stale_after_jst_error}")
     if failed_tickers:
         print("失敗ティッカー:")
         for f in failed_tickers:
