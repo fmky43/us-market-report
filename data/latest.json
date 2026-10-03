@@ -1,6 +1,6 @@
 {
-  "generated_at_utc": "2026-10-03T00:00:50.533628+00:00",
-  "generated_at_jst": "2026-10-03T09:00:50.533628+09:00",
+  "generated_at_utc": "2026-10-03T00:27:42.337744+00:00",
+  "generated_at_jst": "2026-10-03T09:27:42.337744+09:00",
   "market_date": "2026-10-02",
   "stale_after_jst": "2026-10-06T05:00:00+09:00",
   "stale_after_jst_error": null,
@@ -164,8 +164,8 @@
         "change": -30.1997,
         "change_pct": -0.7186,
         "volume": 164881,
-        "volume_20d_avg": 173911.9,
-        "volume_vs_20d_avg_pct": 94.81
+        "volume_20d_avg": 172675.8,
+        "volume_vs_20d_avg_pct": 95.49
       }
     ],
     "japan": [
@@ -215,10 +215,10 @@
         "name": "金融",
         "status": "ok",
         "date": "2026-10-02",
-        "close": 53.5979,
+        "close": 53.53,
         "prev_close": 53.46,
-        "change": 0.1379,
-        "change_pct": 0.258,
+        "change": 0.07,
+        "change_pct": 0.1309,
         "volume": 30268795,
         "volume_20d_avg": 38020509.75,
         "volume_vs_20d_avg_pct": 79.61
@@ -659,10 +659,10 @@
         "name": "JPMorgan Chase",
         "status": "ok",
         "date": "2026-10-02",
-        "close": 332.3786,
+        "close": 332.38,
         "prev_close": 333.18,
-        "change": -0.8014,
-        "change_pct": -0.2405,
+        "change": -0.8,
+        "change_pct": -0.2401,
         "volume": 6539384,
         "volume_20d_avg": 8400444.2,
         "volume_vs_20d_avg_pct": 77.85
