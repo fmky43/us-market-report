@@ -1,6 +1,6 @@
 {
-  "generated_at_utc": "2026-10-03T00:45:09.922920+00:00",
-  "generated_at_jst": "2026-10-03T09:45:09.922920+09:00",
+  "generated_at_utc": "2026-10-03T01:14:05.024433+00:00",
+  "generated_at_jst": "2026-10-03T10:14:05.024433+09:00",
   "market_date": "2026-10-02",
   "stale_after_jst": "2026-10-06T05:00:00+09:00",
   "stale_after_jst_error": null,
@@ -132,11 +132,11 @@
         "symbol": "USDJPY=X",
         "name": "ドル円",
         "status": "ok",
-        "date": "2026-10-02",
+        "date": "2026-10-03",
         "close": 157.83,
-        "prev_close": 157.558,
-        "change": 0.272,
-        "change_pct": 0.1726,
+        "prev_close": 157.927,
+        "change": -0.097,
+        "change_pct": -0.0614,
         "volume": null,
         "volume_20d_avg": null,
         "volume_vs_20d_avg_pct": null
@@ -164,8 +164,8 @@
         "change": -30.1997,
         "change_pct": -0.7186,
         "volume": 164881,
-        "volume_20d_avg": 172675.8,
-        "volume_vs_20d_avg_pct": 95.49
+        "volume_20d_avg": 173911.9,
+        "volume_vs_20d_avg_pct": 94.81
       }
     ],
     "japan": [
