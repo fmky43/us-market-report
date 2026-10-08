@@ -1,6 +1,6 @@
 {
-  "generated_at_utc": "2026-10-08T00:25:49.399713+00:00",
-  "generated_at_jst": "2026-10-08T09:25:49.399713+09:00",
+  "generated_at_utc": "2026-10-08T00:58:05.329268+00:00",
+  "generated_at_jst": "2026-10-08T09:58:05.329268+09:00",
   "market_date": "2026-10-07",
   "stale_after_jst": "2026-10-09T05:00:00+09:00",
   "stale_after_jst_error": null,
@@ -120,10 +120,10 @@
         "name": "ドル指数",
         "status": "ok",
         "date": "2026-10-07",
-        "close": 102.263,
+        "close": 102.212,
         "prev_close": 101.83,
-        "change": 0.433,
-        "change_pct": 0.4252,
+        "change": 0.382,
+        "change_pct": 0.3751,
         "volume": null,
         "volume_20d_avg": null,
         "volume_vs_20d_avg_pct": null
@@ -133,10 +133,10 @@
         "name": "ドル円",
         "status": "ok",
         "date": "2026-10-08",
-        "close": 157.88,
+        "close": 157.838,
         "prev_close": 158.296,
-        "change": -0.416,
-        "change_pct": -0.2628,
+        "change": -0.458,
+        "change_pct": -0.2893,
         "volume": null,
         "volume_20d_avg": null,
         "volume_vs_20d_avg_pct": null
@@ -146,13 +146,13 @@
         "name": "WTI原油",
         "status": "ok",
         "date": "2026-10-07",
-        "close": 89.03,
+        "close": 89.22,
         "prev_close": 89.44,
-        "change": -0.41,
-        "change_pct": -0.4584,
-        "volume": 2704,
-        "volume_20d_avg": 306914.6,
-        "volume_vs_20d_avg_pct": 0.88
+        "change": -0.22,
+        "change_pct": -0.246,
+        "volume": 3328,
+        "volume_20d_avg": 308172.95,
+        "volume_vs_20d_avg_pct": 1.08
       },
       {
         "symbol": "GC=F",
@@ -163,9 +163,9 @@
         "prev_close": 4187.1001,
         "change": -52.8999,
         "change_pct": -1.2634,
-        "volume": 5932,
-        "volume_20d_avg": 150119.0,
-        "volume_vs_20d_avg_pct": 3.95
+        "volume": 8226,
+        "volume_20d_avg": 155916.75,
+        "volume_vs_20d_avg_pct": 5.28
       }
     ],
     "japan": [
@@ -174,23 +174,23 @@
         "name": "シカゴ日経平均先物",
         "status": "ok",
         "date": "2026-10-07",
-        "close": 69760.0,
+        "close": 69520.0,
         "prev_close": 70895.0,
-        "change": -1135.0,
-        "change_pct": -1.601,
-        "volume": 170,
-        "volume_20d_avg": 3350.7,
-        "volume_vs_20d_avg_pct": 5.07
+        "change": -1375.0,
+        "change_pct": -1.9395,
+        "volume": 272,
+        "volume_20d_avg": 3420.65,
+        "volume_vs_20d_avg_pct": 7.95
       },
       {
         "symbol": "^N225",
         "name": "日経平均(前営業日終値)",
         "status": "ok",
         "date": "2026-10-08",
-        "close": 69559.5,
+        "close": 69290.7891,
         "prev_close": 70163.2734,
-        "change": -603.7734,
-        "change_pct": -0.8605,
+        "change": -872.4844,
+        "change_pct": -1.2435,
         "volume": 0,
         "volume_20d_avg": 144595000.0,
         "volume_vs_20d_avg_pct": 0.0
