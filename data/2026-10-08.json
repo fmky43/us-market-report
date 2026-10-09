@@ -1,25 +1,26 @@
 {
-  "generated_at_utc": "2026-10-09T01:28:13.929894+00:00",
-  "generated_at_jst": "2026-10-09T10:28:13.929894+09:00",
+  "generated_at_utc": "2026-10-09T02:15:59.343994+00:00",
+  "generated_at_jst": "2026-10-09T11:15:59.343994+09:00",
   "market_date": "2026-10-08",
   "stale_after_jst": "2026-10-10T05:00:00+09:00",
   "stale_after_jst_error": null,
-  "overall_status": "partial",
-  "summary": "55銘柄中 54件取得成功 / 1件失敗",
-  "failed_tickers": [
-    {
-      "symbol": "^GSPC",
-      "name": "S&P500",
-      "error": "YFRateLimitError: Too Many Requests. Rate limited. Try after a while."
-    }
-  ],
+  "overall_status": "ok",
+  "summary": "55銘柄中 55件取得成功 / 0件失敗",
+  "failed_tickers": [],
   "data": {
     "indices": [
       {
         "symbol": "^GSPC",
         "name": "S&P500",
-        "status": "failed",
-        "error": "YFRateLimitError: Too Many Requests. Rate limited. Try after a while."
+        "status": "ok",
+        "date": "2026-10-08",
+        "close": 7765.3599,
+        "prev_close": 7801.77,
+        "change": -36.4102,
+        "change_pct": -0.4667,
+        "volume": 3518934000,
+        "volume_20d_avg": 5204407700.0,
+        "volume_vs_20d_avg_pct": 67.61
       },
       {
         "symbol": "^IXIC",
@@ -119,10 +120,10 @@
         "name": "ドル指数",
         "status": "ok",
         "date": "2026-10-08",
-        "close": 102.047,
+        "close": 102.004,
         "prev_close": 102.24,
-        "change": -0.193,
-        "change_pct": -0.1888,
+        "change": -0.236,
+        "change_pct": -0.2308,
         "volume": null,
         "volume_20d_avg": null,
         "volume_vs_20d_avg_pct": null
@@ -132,10 +133,10 @@
         "name": "ドル円",
         "status": "ok",
         "date": "2026-10-09",
-        "close": 157.812,
+        "close": 157.96,
         "prev_close": 158.06,
-        "change": -0.248,
-        "change_pct": -0.1569,
+        "change": -0.1,
+        "change_pct": -0.0633,
         "volume": null,
         "volume_20d_avg": null,
         "volume_vs_20d_avg_pct": null
@@ -145,26 +146,26 @@
         "name": "WTI原油",
         "status": "ok",
         "date": "2026-10-08",
-        "close": 90.92,
+        "close": 90.78,
         "prev_close": 88.28,
-        "change": 2.64,
-        "change_pct": 2.9905,
-        "volume": 6375,
-        "volume_20d_avg": 299300.8,
-        "volume_vs_20d_avg_pct": 2.13
+        "change": 2.5,
+        "change_pct": 2.8319,
+        "volume": 7625,
+        "volume_20d_avg": 300824.55,
+        "volume_vs_20d_avg_pct": 2.53
       },
       {
         "symbol": "GC=F",
         "name": "金",
         "status": "ok",
         "date": "2026-10-08",
-        "close": 4180.8999,
+        "close": 4196.3999,
         "prev_close": 4140.7002,
-        "change": 40.1997,
-        "change_pct": 0.9708,
-        "volume": 10303,
-        "volume_20d_avg": 151303.15,
-        "volume_vs_20d_avg_pct": 6.81
+        "change": 55.6997,
+        "change_pct": 1.3452,
+        "volume": 17306,
+        "volume_20d_avg": 153751.3,
+        "volume_vs_20d_avg_pct": 11.26
       }
     ],
     "japan": [
@@ -173,23 +174,23 @@
         "name": "シカゴ日経平均先物",
         "status": "ok",
         "date": "2026-10-08",
-        "close": 68475.0,
+        "close": 68740.0,
         "prev_close": 69875.0,
-        "change": -1400.0,
-        "change_pct": -2.0036,
-        "volume": 331,
-        "volume_20d_avg": 3377.7,
-        "volume_vs_20d_avg_pct": 9.8
+        "change": -1135.0,
+        "change_pct": -1.6243,
+        "volume": 473,
+        "volume_20d_avg": 3375.9,
+        "volume_vs_20d_avg_pct": 14.01
       },
       {
         "symbol": "^N225",
         "name": "日経平均(前営業日終値)",
         "status": "ok",
         "date": "2026-10-09",
-        "close": 68242.8984,
+        "close": 68615.6016,
         "prev_close": 69042.1094,
-        "change": -799.2109,
-        "change_pct": -1.1576,
+        "change": -426.5078,
+        "change_pct": -0.6178,
         "volume": 0,
         "volume_20d_avg": 153370000.0,
         "volume_vs_20d_avg_pct": 0.0
