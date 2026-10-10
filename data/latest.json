@@ -1,6 +1,6 @@
 {
-  "generated_at_utc": "2026-10-10T00:03:25.217833+00:00",
-  "generated_at_jst": "2026-10-10T09:03:25.217833+09:00",
+  "generated_at_utc": "2026-10-10T00:20:08.862110+00:00",
+  "generated_at_jst": "2026-10-10T09:20:08.862110+09:00",
   "market_date": "2026-10-09",
   "stale_after_jst": "2026-10-13T05:00:00+09:00",
   "stale_after_jst_error": null,
@@ -92,10 +92,10 @@
         "name": "S&P500等ウェイトETF",
         "status": "ok",
         "date": "2026-10-09",
-        "close": 213.1485,
+        "close": 213.14,
         "prev_close": 211.87,
-        "change": 1.2785,
-        "change_pct": 0.6034,
+        "change": 1.27,
+        "change_pct": 0.5994,
         "volume": 6534338,
         "volume_20d_avg": 7706806.9,
         "volume_vs_20d_avg_pct": 84.79
@@ -150,9 +150,9 @@
         "prev_close": 91.49,
         "change": 0.17,
         "change_pct": 0.1858,
-        "volume": 202301,
-        "volume_20d_avg": 305359.35,
-        "volume_vs_20d_avg_pct": 66.25
+        "volume": 202262,
+        "volume_20d_avg": 304130.25,
+        "volume_vs_20d_avg_pct": 66.51
       },
       {
         "symbol": "GC=F",
@@ -164,8 +164,8 @@
         "change": 63.2998,
         "change_pct": 1.5227,
         "volume": 130552,
-        "volume_20d_avg": 159445.65,
-        "volume_vs_20d_avg_pct": 81.88
+        "volume_20d_avg": 153762.6,
+        "volume_vs_20d_avg_pct": 84.9
       }
     ],
     "japan": [
@@ -179,8 +179,8 @@
         "change": 645.0,
         "change_pct": 0.9426,
         "volume": 2643,
-        "volume_20d_avg": 3451.05,
-        "volume_vs_20d_avg_pct": 76.59
+        "volume_20d_avg": 3386.2,
+        "volume_vs_20d_avg_pct": 78.05
       },
       {
         "symbol": "^N225",
@@ -228,10 +228,10 @@
         "name": "エネルギー",
         "status": "ok",
         "date": "2026-10-09",
-        "close": 65.12,
+        "close": 65.1962,
         "prev_close": 65.24,
-        "change": -0.12,
-        "change_pct": -0.1839,
+        "change": -0.0438,
+        "change_pct": -0.0671,
         "volume": 27270976,
         "volume_20d_avg": 35414333.8,
         "volume_vs_20d_avg_pct": 77.01
@@ -319,10 +319,10 @@
         "name": "公益",
         "status": "ok",
         "date": "2026-10-09",
-        "close": 41.36,
+        "close": 41.38,
         "prev_close": 41.07,
-        "change": 0.29,
-        "change_pct": 0.7061,
+        "change": 0.31,
+        "change_pct": 0.7548,
         "volume": 16735225,
         "volume_20d_avg": 34128406.25,
         "volume_vs_20d_avg_pct": 49.04
@@ -451,10 +451,10 @@
         "name": "Oracle",
         "status": "ok",
         "date": "2026-10-09",
-        "close": 141.5,
+        "close": 141.55,
         "prev_close": 135.69,
-        "change": 5.81,
-        "change_pct": 4.2818,
+        "change": 5.86,
+        "change_pct": 4.3187,
         "volume": 25467677,
         "volume_20d_avg": 30924888.85,
         "volume_vs_20d_avg_pct": 82.35
@@ -620,10 +620,10 @@
         "name": "TSMC",
         "status": "ok",
         "date": "2026-10-09",
-        "close": 453.3,
+        "close": 453.295,
         "prev_close": 457.99,
-        "change": -4.69,
-        "change_pct": -1.024,
+        "change": -4.695,
+        "change_pct": -1.0251,
         "volume": 9207499,
         "volume_20d_avg": 10028924.95,
         "volume_vs_20d_avg_pct": 91.81
