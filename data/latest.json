@@ -1,6 +1,6 @@
 {
-  "generated_at_utc": "2026-10-10T00:47:18.956254+00:00",
-  "generated_at_jst": "2026-10-10T09:47:18.956254+09:00",
+  "generated_at_utc": "2026-10-10T01:17:03.321781+00:00",
+  "generated_at_jst": "2026-10-10T10:17:03.321781+09:00",
   "market_date": "2026-10-09",
   "stale_after_jst": "2026-10-13T05:00:00+09:00",
   "stale_after_jst_error": null,
@@ -150,9 +150,9 @@
         "prev_close": 91.49,
         "change": 0.17,
         "change_pct": 0.1858,
-        "volume": 202301,
-        "volume_20d_avg": 305359.35,
-        "volume_vs_20d_avg_pct": 66.25
+        "volume": 202262,
+        "volume_20d_avg": 304130.25,
+        "volume_vs_20d_avg_pct": 66.51
       },
       {
         "symbol": "GC=F",
@@ -163,9 +163,9 @@
         "prev_close": 4157.0,
         "change": 63.2998,
         "change_pct": 1.5227,
-        "volume": 130549,
-        "volume_20d_avg": 158209.4,
-        "volume_vs_20d_avg_pct": 82.52
+        "volume": 130552,
+        "volume_20d_avg": 153762.6,
+        "volume_vs_20d_avg_pct": 84.9
       }
     ],
     "japan": [
@@ -179,8 +179,8 @@
         "change": 645.0,
         "change_pct": 0.9426,
         "volume": 2643,
-        "volume_20d_avg": 3451.05,
-        "volume_vs_20d_avg_pct": 76.59
+        "volume_20d_avg": 3386.2,
+        "volume_vs_20d_avg_pct": 78.05
       },
       {
         "symbol": "^N225",
