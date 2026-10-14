@@ -1,6 +1,6 @@
 {
-  "generated_at_utc": "2026-10-14T23:15:35.518285+00:00",
-  "generated_at_jst": "2026-10-15T08:15:35.518285+09:00",
+  "generated_at_utc": "2026-10-14T23:28:23.930114+00:00",
+  "generated_at_jst": "2026-10-15T08:28:23.930114+09:00",
   "market_date": "2026-10-14",
   "stale_after_jst": "2026-10-16T05:00:00+09:00",
   "stale_after_jst_error": null,
@@ -133,10 +133,10 @@
         "name": "ドル円",
         "status": "ok",
         "date": "2026-10-15",
-        "close": 158.103,
+        "close": 158.066,
         "prev_close": 158.322,
-        "change": -0.219,
-        "change_pct": -0.1383,
+        "change": -0.256,
+        "change_pct": -0.1617,
         "volume": null,
         "volume_20d_avg": null,
         "volume_vs_20d_avg_pct": null
@@ -146,26 +146,26 @@
         "name": "WTI原油",
         "status": "ok",
         "date": "2026-10-14",
-        "close": 94.9,
+        "close": 94.82,
         "prev_close": 94.14,
-        "change": 0.76,
-        "change_pct": 0.8073,
-        "volume": 953,
-        "volume_20d_avg": 277141.7,
-        "volume_vs_20d_avg_pct": 0.34
+        "change": 0.68,
+        "change_pct": 0.7223,
+        "volume": 1876,
+        "volume_20d_avg": 277187.85,
+        "volume_vs_20d_avg_pct": 0.68
       },
       {
         "symbol": "GC=F",
         "name": "金",
         "status": "ok",
         "date": "2026-10-14",
-        "close": 4127.1001,
+        "close": 4125.2998,
         "prev_close": 4177.2998,
-        "change": -50.1997,
-        "change_pct": -1.2017,
-        "volume": 3495,
-        "volume_20d_avg": 135664.5,
-        "volume_vs_20d_avg_pct": 2.58
+        "change": -52.0,
+        "change_pct": -1.2448,
+        "volume": 4648,
+        "volume_20d_avg": 135722.15,
+        "volume_vs_20d_avg_pct": 3.42
       }
     ],
     "japan": [
@@ -174,13 +174,13 @@
         "name": "シカゴ日経平均先物",
         "status": "ok",
         "date": "2026-10-14",
-        "close": 66350.0,
+        "close": 66240.0,
         "prev_close": 68240.0,
-        "change": -1890.0,
-        "change_pct": -2.7696,
-        "volume": 99,
-        "volume_20d_avg": 2912.25,
-        "volume_vs_20d_avg_pct": 3.4
+        "change": -2000.0,
+        "change_pct": -2.9308,
+        "volume": 128,
+        "volume_20d_avg": 2913.7,
+        "volume_vs_20d_avg_pct": 4.39
       },
       {
         "symbol": "^N225",
