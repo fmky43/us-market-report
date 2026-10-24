@@ -1,6 +1,6 @@
 {
-  "generated_at_utc": "2026-10-24T00:02:58.043163+00:00",
-  "generated_at_jst": "2026-10-24T09:02:58.043163+09:00",
+  "generated_at_utc": "2026-10-24T00:47:04.581656+00:00",
+  "generated_at_jst": "2026-10-24T09:47:04.581656+09:00",
   "market_date": "2026-10-23",
   "stale_after_jst": "2026-10-27T05:00:00+09:00",
   "stale_after_jst_error": null,
@@ -150,9 +150,9 @@
         "prev_close": 99.47,
         "change": 3.97,
         "change_pct": 3.9912,
-        "volume": 309751,
-        "volume_20d_avg": 278183.3,
-        "volume_vs_20d_avg_pct": 111.35
+        "volume": 309746,
+        "volume_20d_avg": 279410.2,
+        "volume_vs_20d_avg_pct": 110.86
       },
       {
         "symbol": "GC=F",
@@ -163,9 +163,9 @@
         "prev_close": 4060.3999,
         "change": -50.3999,
         "change_pct": -1.2413,
-        "volume": 173280,
-        "volume_20d_avg": 145023.85,
-        "volume_vs_20d_avg_pct": 119.48
+        "volume": 173271,
+        "volume_20d_avg": 149470.35,
+        "volume_vs_20d_avg_pct": 115.92
       }
     ],
     "japan": [
@@ -179,8 +179,8 @@
         "change": -15.0,
         "change_pct": -0.0239,
         "volume": 9356,
-        "volume_20d_avg": 4151.85,
-        "volume_vs_20d_avg_pct": 225.35
+        "volume_20d_avg": 4216.7,
+        "volume_vs_20d_avg_pct": 221.88
       },
       {
         "symbol": "^N225",
@@ -464,10 +464,10 @@
         "name": "Salesforce",
         "status": "ok",
         "date": "2026-10-23",
-        "close": 248.2,
+        "close": 248.69,
         "prev_close": 250.29,
-        "change": -2.09,
-        "change_pct": -0.835,
+        "change": -1.6,
+        "change_pct": -0.6393,
         "volume": 5839544,
         "volume_20d_avg": 7980432.2,
         "volume_vs_20d_avg_pct": 73.17
@@ -659,10 +659,10 @@
         "name": "JPMorgan Chase",
         "status": "ok",
         "date": "2026-10-23",
-        "close": 331.62,
+        "close": 331.85,
         "prev_close": 336.54,
-        "change": -4.92,
-        "change_pct": -1.4619,
+        "change": -4.69,
+        "change_pct": -1.3936,
         "volume": 4778374,
         "volume_20d_avg": 7501668.7,
         "volume_vs_20d_avg_pct": 63.7
