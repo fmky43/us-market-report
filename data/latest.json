@@ -1,6 +1,6 @@
 {
-  "generated_at_utc": "2026-10-31T00:44:46.454223+00:00",
-  "generated_at_jst": "2026-10-31T09:44:46.454223+09:00",
+  "generated_at_utc": "2026-10-31T01:04:37.545793+00:00",
+  "generated_at_jst": "2026-10-31T10:04:37.545793+09:00",
   "market_date": "2026-10-30",
   "stale_after_jst": "2026-11-03T06:00:00+09:00",
   "stale_after_jst_error": null,
@@ -150,8 +150,8 @@
         "prev_close": 102.0,
         "change": 0.95,
         "change_pct": 0.9314,
-        "volume": 248667,
-        "volume_20d_avg": 263616.4,
+        "volume": 248668,
+        "volume_20d_avg": 263616.45,
         "volume_vs_20d_avg_pct": 94.33
       },
       {
