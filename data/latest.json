@@ -1,6 +1,6 @@
 {
-  "generated_at_utc": "2026-11-13T01:48:12.459378+00:00",
-  "generated_at_jst": "2026-11-13T10:48:12.459378+09:00",
+  "generated_at_utc": "2026-11-13T02:08:48.041779+00:00",
+  "generated_at_jst": "2026-11-13T11:08:48.041779+09:00",
   "market_date": "2026-11-12",
   "stale_after_jst": "2026-11-14T06:00:00+09:00",
   "stale_after_jst_error": null,
@@ -133,10 +133,10 @@
         "name": "ドル円",
         "status": "ok",
         "date": "2026-11-13",
-        "close": 159.859,
+        "close": 159.898,
         "prev_close": 159.734,
-        "change": 0.125,
-        "change_pct": 0.0783,
+        "change": 0.164,
+        "change_pct": 0.1027,
         "volume": null,
         "volume_20d_avg": null,
         "volume_vs_20d_avg_pct": null
@@ -150,22 +150,22 @@
         "prev_close": 86.53,
         "change": 1.59,
         "change_pct": 1.8375,
-        "volume": 7215,
-        "volume_20d_avg": 284122.4,
-        "volume_vs_20d_avg_pct": 2.54
+        "volume": 7735,
+        "volume_20d_avg": 281741.55,
+        "volume_vs_20d_avg_pct": 2.75
       },
       {
         "symbol": "GC=F",
         "name": "金",
         "status": "ok",
         "date": "2026-11-12",
-        "close": 3915.2,
+        "close": 3913.5,
         "prev_close": 4000.5,
-        "change": -85.3,
-        "change_pct": -2.1322,
-        "volume": 17183,
-        "volume_20d_avg": 166258.75,
-        "volume_vs_20d_avg_pct": 10.34
+        "change": -87.0,
+        "change_pct": -2.1747,
+        "volume": 18727,
+        "volume_20d_avg": 163149.55,
+        "volume_vs_20d_avg_pct": 11.48
       }
     ],
     "japan": [
@@ -174,23 +174,23 @@
         "name": "シカゴ日経平均先物",
         "status": "ok",
         "date": "2026-11-12",
-        "close": 61935.0,
+        "close": 61985.0,
         "prev_close": 62040.0,
-        "change": -105.0,
-        "change_pct": -0.1692,
-        "volume": 970,
-        "volume_20d_avg": 7402.5,
-        "volume_vs_20d_avg_pct": 13.1
+        "change": -55.0,
+        "change_pct": -0.0887,
+        "volume": 1025,
+        "volume_20d_avg": 7274.85,
+        "volume_vs_20d_avg_pct": 14.09
       },
       {
         "symbol": "^N225",
         "name": "日経平均(前営業日終値)",
         "status": "ok",
         "date": "2026-11-13",
-        "close": 61832.8984,
+        "close": 61902.5,
         "prev_close": 60798.8398,
-        "change": 1034.0586,
-        "change_pct": 1.7008,
+        "change": 1103.6602,
+        "change_pct": 1.8153,
         "volume": 0,
         "volume_20d_avg": 174100000.0,
         "volume_vs_20d_avg_pct": 0.0
